@@ -82,6 +82,8 @@ Route::get('del-cart/{id}',[App\Http\Controllers\PageController::class,'getDelIt
 Route::get('check-out',[App\Http\Controllers\PageController::class,'getCheckout'])->name('dathang');
 Route::post('check-out',[App\Http\Controllers\PageController::class,'postCheckout'])->name('dathang');
 
-//------------------------------Cổng thanh toán VNPAY-----------------------------------------------//
+//------------------------------Cổng thanh toán -----------------------------------------------//
 Route::post('/vnp_payment',[App\Http\Controllers\PageController::class,'vnp_payment']);
+
+Route::post('/momo_payment',[App\Http\Controllers\PageController::class,'momo_payment']);
 

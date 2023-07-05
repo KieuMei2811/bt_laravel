@@ -54,16 +54,23 @@
 							@endforeach			
 										
 							<div class="cart-caption">			
-								<div class="cart-total text-right">Tổng tiền: <span class="cart-total-value">{{number_format(Session('cart')->totalPrice)}} đồng</span></div>		
+								<div class="cart-total text-right">Tổng tiền: <span class="cart-total-value">{{ number_format(Session('cart')->totalPrice) }} đồng</span></div>		
 								<div class="clearfix"></div>		
 										
 								<div class="center">		
 									<div class="space10">&nbsp;</div>	
                                      <form action="{{url('vnp_payment')}}" method="POST">
-														@csrf
-														<button type="submit" class="btn btn-default check_out" name="redirect">Thanh toán VNPAY</button>
-														<div class="payment_box payment_method_vnpay"style="display: none;">Pay via VnPay; you can pay with your credit card if youdon’t have a VnPay account</div>
-													</form>
+                                        @csrf
+                                        <input type="hidden"  name="total_vnpay" value="{{Session('cart')->totalPrice}}">
+                                        <button type="submit" class="btn btn-default check_out" name="redirect">Thanh toán VNPAY</button>
+                                        <div class="payment_box payment_method_vnpay"style="display: none;">Pay via VnPay; you can pay with your credit card if youdon’t have a VnPay account</div>
+                                    </form>
+                                    <form action="{{url('momo_payment')}}" method="POST">
+                                        @csrf
+                                        <input type="hidden"  name="total_momo" value="{{Session('cart')->totalPrice}}">
+                                        <button type="submit" class="btn btn-default check_out" name="payUrl">Thanh toán MOMO</button>
+                                        <div class="payment_box payment_method_vnpay"style="display: none;">Pay via VnPay; you can pay with your credit card if youdon’t have a VnPay account</div>
+                                    </form>
 								</div>		
 							</div>			
 						</div>				
